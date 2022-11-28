@@ -66,11 +66,11 @@ main{
 ::placeholder{
     color: #ffffff;
 }
-.search-box .search-bar button img{
+.search-box .search-bar .search-button img{
     width: 30px;
     
 }
-.search-box .search-bar button{
+.search-box .search-bar .search-button{
     width: 5%;
     border: 0;
     border-radius: 50%;

@@ -2,12 +2,12 @@
   <div id="app" :class="typeof weather.main !='undefined' && weather.main.temp > 16 ? 'warm' : ''">
     <main>
       <div class="search-box">
-         <form class="search-bar">
+         <form class="search-bar" @submit.prevent="click" >
        
           <input type="text" class="search-input" placeholder="Search..."
-          v-model= "query" @keypress="fetchWeather"/>
-          <button type="submit" @click="click()"><img src="./assets/search-icon.png"></button>
-        
+          v-model= "query"/>
+          <button class="search-button" type="submit"><img src="./assets/search-icon.png"></button>
+          
          </form>     
         
       </div>
@@ -41,18 +41,8 @@ export default {
       }
     },
     methods: {
+       
       
-      fetchWeather(e){
-        if(e.key == "Enter")
-        {
-          fetch(`${this.url_base}weather?q=${this.query}&units=metric&APPID=${this.api_key}`)
-            .then(res=>{
-              return res.json();
-            }).then(this.setResults,console.log(this.weather));
-           
-        }
-      
-      },
       click(){
         fetch(`${this.url_base}weather?q=${this.query}&units=metric&APPID=${this.api_key}`)
             .then(res=>{
